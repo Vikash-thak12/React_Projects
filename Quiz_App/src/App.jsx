@@ -1,9 +1,11 @@
+import Quiz from "./Components/Quiz/Quiz"
+
 function App() {
  
 
   return (
     <>
-      <h1>Welcome to the webpage:</h1>
+    <Quiz />
     </>
   )
 }
