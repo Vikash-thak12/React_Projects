@@ -9,7 +9,7 @@ const Quiz = () => {
   const [lock, setLock] = useState(false);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
-  const [optionSelected, setOptionSelected] = useState(false); // New state variable
+  const [optionSelected, setOptionSelected] = useState(false); 
 
   const option1 = useRef(null);
   const option2 = useRef(null);
