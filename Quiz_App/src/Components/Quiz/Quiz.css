@@ -48,3 +48,14 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.container .correct {
+    background: #20d38c;
+    border-color: #00d397;
+    
+}
+
+.container .wrong {
+    background: #e64242;
+    border-color: #FF4A4A;
+}

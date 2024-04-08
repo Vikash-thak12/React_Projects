@@ -38,5 +38,5 @@ export const data = [
       option3: "Sitemap",
       option4: "Pen Drive",
       ans: 2,
-    },
+    }
   ];
