@@ -2,11 +2,11 @@ import './Navbar.css'
 import { asset } from '../../assets/asset'
 import youtube from '../../Images/youtube.svg'
 
-const Navbar = () => {
+const Navbar = ({setSidebar}) => {
     return (
         <nav>
             <div className='nav-left'>
-                <img className='menu' src={asset.menu} alt="" />
+                <img onClick={() => setSidebar(prev=>prev===false?true:false)} className='menu' src={asset.menu} alt="" />
                 <img className='logo' src={youtube} alt="" />
             </div>
 
