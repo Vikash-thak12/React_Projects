@@ -1,9 +1,10 @@
+import Navbar from "./Components/Navbar/Navbar";
 
 
 const App = () => {
   return (
     <>
-    <h1>Welcome to the webpage:</h1>
+    <Navbar />
     </>
   );
 };

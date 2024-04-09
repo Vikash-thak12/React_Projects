@@ -1,0 +1,60 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #0f0f0f;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-left, .nav-middle .search-box, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.nav-left .menu {
+    width: 20px;
+    cursor: pointer;
+}
+.nav-left .logo {
+    width: 80px;
+    mix-blend-mode: normal;
+    cursor: pointer;
+}
+
+.search-box 
+{
+    width: 500px;
+    border: 1px solid gray;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+.search-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: text;
+    color: white;
+}
+.search-box img {
+    cursor: pointer;
+}
+
+.search-box input::placeholder {
+    color: gray;
+    /* font-weight: bold; */
+}
+
+
+.nav-right img {
+    width: 25px;
+}
+
+.nav-right .profile {
+    border-radius: 50%;
+}
