@@ -1,0 +1,5 @@
+.feed {
+    border: 1px solid black;
+    height: 90vh;
+    overflow: auto;
+}

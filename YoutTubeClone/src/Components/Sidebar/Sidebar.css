@@ -1,7 +1,7 @@
 .sidebar 
 {
     background-color: rgb(204, 204, 24);
-    max-width: 180px;
+    min-width: 180px;
     height: 92vh;
     overflow: auto;
     /* padding: 10px; */
@@ -48,7 +48,7 @@
 }
 
 .small-sidebar {
-    width: 4.5%;
+    width: 4%;
 }
 .small-sidebar p, .small-sidebar h2
 {
