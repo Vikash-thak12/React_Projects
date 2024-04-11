@@ -1,19 +1,41 @@
 .feed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-column-gap: 15px;
     grid-row-gap: 30px;
     margin-top: 15px;
+    padding-bottom: 20px;
 }
 
+.card 
+{
+    cursor: pointer;
+    transition: .2s;
+}
+.card:hover {
+    transform: scale(1.01);
+}
 
 .card img {
     width: 100%;
     border-radius: 10px;
 }
 
-.card p,h3 {
-    padding-left: 5px;
+.card h2{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 5px 0;
 }
 
+.card h3{
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin: 6px 0;
+}
+
+.card p {
+    font-size: 14px;
+}
 
