@@ -59,6 +59,26 @@ const Sidebar = ({sidebar}) => {
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
+            {/* <div className="sidelink">
+                <img src={asset.cameron} alt="" />
+                <p>BB ki Vines</p>
+            </div>
+            <div className="sidelink">
+                <img src={asset.cameron} alt="" />
+                <p>BB ki Vines</p>
+            </div>
+            <div className="sidelink">
+                <img src={asset.cameron} alt="" />
+                <p>BB ki Vines</p>
+            </div>
+            <div className="sidelink">
+                <img src={asset.cameron} alt="" />
+                <p>BB ki Vines</p>
+            </div>
+            <div className="sidelink">
+                <img src={asset.cameron} alt="" />
+                <p>BB ki Vines</p>
+            </div> */}
         </div>
     </div>
     </>

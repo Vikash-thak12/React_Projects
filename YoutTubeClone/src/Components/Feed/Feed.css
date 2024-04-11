@@ -1,5 +1,12 @@
 .feed {
-    border: 1px solid black;
-    height: 90vh;
-    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+    margin-top: 15px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
 }
