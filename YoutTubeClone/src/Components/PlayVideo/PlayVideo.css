@@ -28,6 +28,7 @@ video {
     justify-content: space-between;
     padding: 10px 0;
     height: 40px;
+    /* border: 1px solid white; */
 }
 .play-video-info img {
     width: 50px;
@@ -62,16 +63,39 @@ video {
     outline: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 8px;
     border-radius: 20px;
+}
+
+.first button:hover {
+    background: rgb(195, 192, 192);
 }
 
 .second {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 .second img
 {
-    width: 30px;
+    width: 20px;
+}
+
+.second span 
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* border: 1px solid white; */
+    padding: 8px 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #2e2f2f;
+}
+
+.second span:hover 
+{
+    background: #444545;
 }
