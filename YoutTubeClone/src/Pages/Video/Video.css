@@ -1,0 +1,8 @@
+.play-container {
+    background: #0f0f0f;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 50px;
+}
