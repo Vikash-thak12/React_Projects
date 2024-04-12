@@ -10,10 +10,6 @@ const PlayVideo = () => {
                 <div className="play-video-info">
                     <div className='first'>
                         <img src={asset.jack} alt="" />
-                        {/* <div>
-                            <h2>Vikash</h2>
-                            <h3>2k subscribers</h3>
-                        </div> */}
                         <span>
                             <p>Vikash</p>
                             <p>2k subscribers</p>
@@ -26,6 +22,12 @@ const PlayVideo = () => {
                         <span><img src={asset.share} alt="" />Share</span>
                         <span><img src={asset.save} alt="" />Save</span>
                     </div>
+                </div>
+                <div className="description">
+                    <h2>25,344 views <span>Premiered 19 hours ago</span></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, temporibus! Sequi totam dolorum saepe, quos quis cumque alias non ad consequuntur vel dolores ducimus harum vero distinctio ipsum, aliquam obcaecati.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis exercitationem error, porro quo voluptate pariatur unde quaerat alias aperiam autem, placeat ratione. Quod ad repellendus dignissimos similique nisi commodi quis.
+                    </p>
                 </div>
             </div>
         </div>
