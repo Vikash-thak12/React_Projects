@@ -39,43 +39,43 @@ const Sidebar = ({sidebar,category,setCategory}) => {
     
         <div className="subscribed-links">
             <h2>Subscriptions</h2>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.jack} alt="" />
                 <p>Carry Minati</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.simon} alt="" />
                 <p>Round2Hell</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.tom} alt="" />
                 <p>Dhruv Rathee</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.megan} alt="" />
                 <p>Professor</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
-            {/* <div className={`sidelink ${category===0?"active":""}`}>
+            {/* <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div>
-            <div className={`sidelink ${category===0?"active":""}`}>
+            <div className="sidelink">
                 <img src={asset.cameron} alt="" />
                 <p>BB ki Vines</p>
             </div> */}

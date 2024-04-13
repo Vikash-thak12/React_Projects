@@ -1,7 +1,8 @@
 .sidebar 
 {
     /* background-color: rgb(204, 204, 24); */
-    background: #383939;
+    /* background: #383939; */
+    background: #0f0f0f;
     color: white;
     width: 12%;
     height: 100vh;
@@ -26,7 +27,7 @@
     transition: .1s ;
 }
 .sidelink:hover {
-    background: #606060;
+    background: #2a2929;
 }
 
 .sidelink img {
@@ -62,4 +63,9 @@
 .small-sidebar hr {
     /* width: 50%; */
     margin-bottom: 10x;
+}
+
+
+.sidelink.active {
+    background: #2a2929;
 }
