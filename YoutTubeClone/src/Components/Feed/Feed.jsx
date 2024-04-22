@@ -1,116 +1,44 @@
 import './Feed.css'
 import { asset } from '../../assets/asset'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { API_KEY } from '../../data';
+import { useEffect, useState } from 'react';
+import { API_KEY, value_convert } from '../../data';
+import moment from 'moment';
 
-const Feed = ({category}) => {
-    const [data,setData] = useState(0)
+const Feed = ({ category }) => {
+    const [data, setData] = useState([]);
 
-    const fetch_data = async () => {
-        const videolist_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=70&regionCode=us&videoCategoryId=${category}&key=${API_KEY}`;
-        await fetch(videolist_url).then(response=> response.json()).then(data=> setData(data.items))
+    const fetchdata = async () => {
+        // const videolist_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=100&regionCode=us&videoCategoryId=${category}&key=${API_KEY}`;
+
+        const videolist_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=in&videoCategoryId=${category}&key=${API_KEY}`;
+
+        await fetch(videolist_url).then(response => response.json()).then(data => setData(data.items))
     }
-  return (
-    <div className="feed">
-        <Link to={`video/20/6834`} className="card">
-            <img src={asset.thumbnail1} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </Link>
-        {/* <div className="card">
-            <img src={asset.thumbnail2} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
+
+    useEffect(() => {
+        fetchdata();
+    }, [category])
+
+
+
+    return (
+        <div className="feed">
+
+            {data.map((item, index) => {
+                return (
+                    <Link to={`video/${item.snippet.categoryId}/${item.id}`} className="card">
+                        <img src={item.snippet.thumbnails.medium.url} alt="" />
+                        <h2>{item.snippet.title}</h2>
+                        <h3>{item.snippet.channelTitle}</h3>
+                        <p>{value_convert(item.statistics.viewCount)} views &bull; {moment(item.snippet.publishedAt).fromNow()} </p>
+                    </Link>
+                )
+            })}
+
+
         </div>
-        <div className="card">
-            <img src={asset.thumbnail3} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail4} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail5} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail6} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail7} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail8} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail1} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail2} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail3} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail4} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail5} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail6} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail7} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div>
-        <div className="card">
-            <img src={asset.thumbnail8} alt="" />
-            <h2>The tranquil lake shimmered under the golden sunset, while birdsong filled the air, creating a symphony of natural beauty.</h2>
-            <h3>Vikash</h3>
-            <p>15k views &bull; 2 days ago</p>
-        </div> */}
-    </div>
-  );
+    );
 };
 
 export default Feed;

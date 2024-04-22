@@ -1,33 +1,61 @@
 import './PlayVideo.css'
 import { asset } from '../../assets/asset'
+import { useEffect, useState } from 'react';
+import { API_KEY, value_convert } from '../../data';
+import moment from 'moment';
+import { useParams } from 'react-router-dom';
 
 const PlayVideo = () => {
+
+    const {videoId} = useParams();
+
+    const [apidata, setApidata] = useState(null)
+    const [channeldata, setChanneldata] = useState(null)
+
+    const videodetails = async () => {
+        const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
+        await fetch(video_url).then(res=> res.json()).then(data=> setApidata(data.items[0]))
+    }
+
+    const channeldetails = async () => {
+        const channel_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apidata.snippet.channelId}&key=${API_KEY}`;
+        await fetch(channel_url).then(res => res.json()).then(data => setChanneldata(data.items[0]))
+    }
+
+
+    useEffect( () => {
+        videodetails();
+    },[videoId]);
+
+    useEffect ( () => {
+        channeldetails();
+    },[apidata]);
+
+
     return (
         <div className='play-video'>
             <div className="video">
-                <video src={asset.video} controls autoPlay ></video>
-                <h3>Romantic video for betterment..</h3>
+                <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>{apidata?apidata.snippet.title:"Title here"}</h3>
                 <div className="play-video-info">
                     <div className='first'>
-                        <img src={asset.jack} alt="" />
+                        <img src={channeldata?channeldata.snippet.thumbnails.default.url:""} alt="" />
                         <span>
-                            <p>Vikash</p>
-                            <p>2k subscribers</p>
+                            <p>{apidata?apidata.snippet.channelTitle:"Title of the video"}</p>
+                            <p>{channeldata?value_convert(channeldata.statistics.subscriberCount):"350K"} Subscribers</p>
                         </span>
                         <button> Subscribe </button>
                     </div>
                     <div className='second'>
-                        <span><img src={asset.like} alt="" />Like</span>
-                        <span><img src={asset.dislike} alt="" />Dislike</span>
+                        <span><img src={asset.like} alt="" />{apidata?value_convert(apidata.statistics.likeCount):"125K"}</span>
+                        <span><img src={asset.dislike} alt="" /></span>
                         <span><img src={asset.share} alt="" />Share</span>
                         <span><img src={asset.save} alt="" />Save</span>
                     </div>
                 </div>
                 <div className="description">
-                    <h2>25,344 views <span>Premiered 19 hours ago</span></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, temporibus! Sequi totam dolorum saepe, quos quis cumque alias non ad consequuntur vel dolores ducimus harum vero distinctio ipsum, aliquam obcaecati.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis exercitationem error, porro quo voluptate pariatur unde quaerat alias aperiam autem, placeat ratione. Quod ad repellendus dignissimos similique nisi commodi quis.
-                    </p>
+                    <h2>{apidata?value_convert(apidata.statistics.viewCount):"16K"} views &bull; Premiered {apidata?moment(apidata.snippet.publishedAt).fromNow():"No way"}</h2>
+                    <p>{apidata?apidata.snippet.description.slice(0,250):"Sorry to bother you.."}</p>
                 </div>
             </div>
         </div>
