@@ -12,11 +12,11 @@ const Login = () => {
     if(user) {
       navigate('/') 
     }
-  },[])
+  }, [])
 
 
   const handlesubmit = (e) => {
-    e.preventDefalut()
+    e.preventDefault()
     const email = loginForm.current.email.value;
     const password = loginForm.current.password.value;
 

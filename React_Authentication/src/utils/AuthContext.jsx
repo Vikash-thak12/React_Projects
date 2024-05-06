@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
 
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(false)
 
     useEffect( () => {
         setLoading(false)
@@ -14,18 +14,20 @@ export const AuthProvider = ({children}) => {
 
     const userLogin = async (userInfo) => {
         setLoading(true)
+        console.log("UserInfo:", userInfo)
         try{
             let response = await account.createEmailSession(
                 userInfo.email,
                 userInfo.password
             )
 
-            let accountDetails = await account.get();
-
-            console.log('accountDetails:', accountDetails);
-            setUser(accountDetails)
+            console.log('SESSION:', response)
+            // let accountDetails = await account.get();
+            // setUser(accountDetails)
+           
         } catch(error) {
             console.error(error)
+            // console.log("Error")
         }
         setLoading(false)
     }
