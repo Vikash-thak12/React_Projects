@@ -9,9 +9,11 @@ const App = () => {
   const toggle = () => {
     setIsStart((prev) =>  !prev)
   }
+
+
   return (
     <div>
-      {isStart ? <PlayGame /> : <StartGame toggle={toggle} />}
+      {isStart ? <PlayGame toggle={toggle} /> : <StartGame toggle={toggle} />}
       {/* <StartGame /> */}
     </div>
   );

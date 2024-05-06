@@ -1,0 +1,41 @@
+main {
+    background-color: gray;
+}
+
+.upper-content {
+    background-color: rgb(212, 74, 74);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.right-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-content div {
+    display: flex;
+    gap: 10px;
+}
+
+.right-content .box {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.right-content .box:hover {
+    background-color: black;
+    color: white;
+    transition: .3s;
+}
+
+.right-content p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
