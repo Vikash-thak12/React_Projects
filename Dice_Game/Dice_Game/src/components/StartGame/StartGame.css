@@ -1,3 +1,7 @@
+main {
+    background-color: rgb(50, 39, 135);
+}
+
 .content {
     /* background-color: red; */
 }
@@ -7,6 +11,6 @@
     transition: .3s ;
 }
 .content button:hover {
-    background-color: gray;
+    background-color: rgb(44, 45, 91);
 
 }
