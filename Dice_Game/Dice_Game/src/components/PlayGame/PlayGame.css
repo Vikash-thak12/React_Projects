@@ -7,7 +7,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 5px 20px;
 }
 
 .right-content {
@@ -44,9 +44,9 @@ main {
 
 
 .lower-content {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 30px;
@@ -59,5 +59,19 @@ main {
     border: 1px solid black;
     padding: 5px 0;
     border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
     /* width: 60px; */
+}
+
+
+.rules {
+    /* border: 1px solid black; */
+    position: absolute;
+    bottom: -8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 10px;
+    background-color: rgb(169, 153, 213);
+    border-radius: 20px;
 }

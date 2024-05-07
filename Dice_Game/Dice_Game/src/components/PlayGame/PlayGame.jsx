@@ -8,11 +8,13 @@ const PlayGame = () => {
     const [currentDice, setCurrentDice] = useState(1);
     const [score, setScore] = useState(0)
     const [error, setError] = useState("")
+    const [showrules, setShowrules] = useState(false)
+    const [btn, setBtn] = useState("Show Rules")
 
 
     const randomNumbergenerator = (min, max) => {
         // console.log(Math.floor(Math.random() * (max-min) + min));
-        return Math.floor(Math.random() * (max-min) + min);
+        return Math.floor(Math.random() * (max - min) + min);
     }
 
     const roledice = () => {
@@ -21,15 +23,29 @@ const PlayGame = () => {
             return
         }
         setError("")
-        const randomNum = randomNumbergenerator(1,7);
+        const randomNum = randomNumbergenerator(1, 7);
         setCurrentDice((prev) => randomNum)
-        if(selected === randomNum) {
+        if (selected === randomNum) {
             setScore((prev) => prev + randomNum)
         } else {
             setScore((prev) => prev - 2)
         }
 
         setSelected(undefined)
+    }
+
+    const errorhandler = (value) => {
+        setSelected(value)
+        setError("")
+    }
+
+    const showResult = () => {
+        setShowrules((prev) => !prev)
+        setBtn((prev) => prev === "Show Rules" ? "Hide Rules" : "Show Rules");
+    }
+
+    const resetScore = () => {
+        setScore(0)
     }
 
 
@@ -54,7 +70,7 @@ const PlayGame = () => {
                             {
                                 arrNumber.map((value, i) => (
                                     <div className={`box ${value === selected ? 'select' : ""}`}
-                                        onClick={() => setSelected(value)}
+                                        onClick={() => errorhandler(value)}
                                         key={i}>{value}</div>
                                 ))
                             }
@@ -65,15 +81,24 @@ const PlayGame = () => {
                 <div className="lower-content">
                     <div>
                         <img
-                        className="cursor-pointer"
-                        onClick={roledice}
-                        // onClick={() => selected ? roledice : "Please selece the Number"}
-                        src={`images/dice/dice_${currentDice}.png`} alt="" />
-                    </div> 
-                    <p className="text-center font-bold text-3xl">Click on dice to roll</p>
-                    <button>Reset Score</button>
-                    <button>Show Rules</button>
+                            className="cursor-pointer "
+                            onClick={roledice}
+                            // onClick={() => selected ? roledice : "Please selece the Number"}
+                            src={`images/dice/dice_${currentDice}.png`} alt="" />
+                    </div>
+                    <p className="text-center font-bold text-2xl">Click on dice to roll</p>
+                    <button onClick={resetScore}>Reset Score</button>
+                    <button onClick={showResult} className="bg-black text-white hover:bg-white hover:text-black">{btn}</button>
                 </div>
+                {showrules ?
+                    <div className="rules">
+                        <h2 className="font-bold text-2xl">How to play the Dice Game</h2>
+                        <p>Select any number</p>
+                        <p>Click on the dice image</p>
+                        <p>After click on dice if selected number is equal to dice number you will get same points as dice</p>
+                        <p>If you get wrong dice then 2 points will be reduced from your score</p>
+                    </div>
+                    : ""}
             </main>
         </>
     );
