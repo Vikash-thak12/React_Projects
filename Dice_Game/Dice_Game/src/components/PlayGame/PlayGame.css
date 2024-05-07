@@ -3,7 +3,7 @@ main {
 }
 
 .upper-content {
-    background-color: rgb(212, 74, 74);
+    /* background-color: rgb(212, 74, 74); */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,4 +39,25 @@ main {
     text-align: center;
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+
+
+.lower-content {
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lower-content button{
+    border: 1px solid black;
+    padding: 5px 0;
+    border-radius: 10px;
+    /* width: 60px; */
 }
