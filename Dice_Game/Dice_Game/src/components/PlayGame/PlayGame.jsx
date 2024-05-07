@@ -1,8 +1,11 @@
 // import NumberSelector from './NumberSelector/NumberSelector';
+import { useState } from 'react';
 import './PlayGame.css'
 
 const PlayGame = () => {
     const arrNumber = [1, 2, 3, 4, 5, 6]
+    const [selected, setSelected] = useState();
+    // console.log(selected);
     return (
         // <div className="flex bg-red-200 p-10 gap-5">
         // PlayGame
@@ -22,7 +25,9 @@ const PlayGame = () => {
                         <div>
                             {
                                 arrNumber.map((value, i) => (
-                                    <div className="box" key={i}>{value}</div>
+                                    <div className= {`box ${value === selected ? 'select' : ""}`}
+                                    onClick={() => setSelected(value)}
+                                    key={i}>{value}</div>
                                 ))
                             }
                         </div>
