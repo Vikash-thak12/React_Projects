@@ -1,6 +1,8 @@
+// import NumberSelector from './NumberSelector/NumberSelector';
 import './PlayGame.css'
 
-const PlayGame = ({ toggle }) => {
+const PlayGame = () => {
+    const arrNumber = [1, 2, 3, 4, 5, 6]
     return (
         // <div className="flex bg-red-200 p-10 gap-5">
         // PlayGame
@@ -13,14 +15,16 @@ const PlayGame = ({ toggle }) => {
                         <p className="text-center text-5xl">0</p>
                         <p className="text-2xl font-bold">Total Score</p>
                     </div>
+                    {/* <div>
+                        <NumberSelector />
+                    </div> */}
                     <div className="right-content">
                         <div>
-                            <div className="box">1</div>
-                            <div className="box">2</div>
-                            <div className="box">3</div>
-                            <div className="box">4</div>
-                            <div className="box">5</div>
-                            <div className="box">6</div>
+                            {
+                                arrNumber.map((value, i) => (
+                                    <div className="box" key={i}>{value}</div>
+                                ))
+                            }
                         </div>
                         <p>Select Number</p>
                     </div>
