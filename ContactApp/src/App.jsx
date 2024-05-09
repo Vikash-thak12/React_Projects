@@ -2,8 +2,8 @@
 
 const App = () => {
   return (
-    <div className='bg-red-800 justify-center flex'>
-    App
+    <div className='bg-red-800'>
+      <h1>Hey there</h1>
     </div>
   );
 };
