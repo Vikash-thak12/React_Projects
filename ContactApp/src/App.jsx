@@ -1,8 +1,8 @@
-import React from 'react';
+// import React from 'react';
 
 const App = () => {
   return (
-    <div className='bg-red-800'>
+    <div className='bg-red-800 justify-center flex'>
     App
     </div>
   );
