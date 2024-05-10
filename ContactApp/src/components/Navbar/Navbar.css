@@ -1,0 +1,9 @@
+.datas .data {
+    background: #FFEAAE;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
