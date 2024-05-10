@@ -8,7 +8,7 @@ import { db } from '../../config/firebase';
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoMdTrash } from 'react-icons/io';
 
-const Navbar = () => {
+const Navbar = ({ onopen, isopen }) => {
 
     const [contacts, setContacts] = useState([])
 
@@ -42,13 +42,39 @@ const Navbar = () => {
                 <div className='flex items-center justify-center w-full relative'>
                     <FiSearch className=' text-white text-2xl absolute left-2' />
                     <input type="text" placeholder='Search'
-                        className='flex-grow border border-white bg-transparent rounded-md px-12 py-3' />
+                        className='flex-grow border outline-none border-white bg-transparent rounded-md px-12 py-3' />
                 </div>
-                <FaPlusCircle className='text-white text-5xl' />
+                <FaPlusCircle onClick={onopen} className='text-white text-5xl cursor-pointer' />
                 <div>
                 </div>
             </div>
-            <div className="datas mt-5 py-2 rounded-md gap-3 flex flex-col">
+
+            {
+                isopen ? ("") : (
+                    <>
+                        <div className="datas mt-5 py-2 rounded-md gap-3 flex flex-col">
+                            {
+                                contacts.map((contact) => (
+                                    <div key={contact.id} className='data'>
+                                        <div className='flex items-center gap-2'>
+                                            <FaRegUserCircle className='text-4xl text-orange cursor-pointer' />
+                                            <div className=''>
+                                                <h2 className='font-bold'>{contact.name}</h2>
+                                                <p>{contact.Email}</p>
+                                            </div>
+                                        </div>
+                                        <div className="icons flex text-4xl text-blue-700 cursor-pointer">
+                                            <RiEditCircleLine />
+                                            <IoMdTrash />
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </>
+                )
+            }
+            {/* <div className="datas mt-5 py-2 rounded-md gap-3 flex flex-col">
                 {
                     contacts.map((contact) => (
                         <div key={contact.id} className='data'>
@@ -66,7 +92,7 @@ const Navbar = () => {
                         </div>
                     ))
                 }
-            </div>
+            </div> */}
         </>
     );
 };
