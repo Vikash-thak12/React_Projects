@@ -13,7 +13,7 @@ const Modal = ({ isopen, onclose, children }) => {
                                 onClick={onclose}
                                 className="text-white text-4xl cursor-pointer absolute right-2 " />
                             {/* <h1 className='text-white px-3'>Hi there is the details of the modal</h1> */}
-                            <h1 className='pl-2 pr-5 text-white'>{children}</h1>
+                            <div className='mt-5 pl-2 pr-12'>{children}</div>
                         </div>
                         {/* {children} */}
                         <div onClick={onclose} className='absolute z-40 top-0 h-screen w-screen backdrop-blur' />

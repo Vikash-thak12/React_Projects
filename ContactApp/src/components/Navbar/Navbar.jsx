@@ -3,7 +3,7 @@ import './Navbar.css'
 // import { AiFillPlayCircle } from 'react-icons/ai';
 import { FaPlusCircle, FaRegUserCircle } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoMdTrash } from 'react-icons/io';
@@ -12,6 +12,7 @@ const Navbar = ({ onopen, isopen }) => {
 
     const [contacts, setContacts] = useState([])
 
+    
     useEffect(() => {
         const getcontacts = async () => {
             try {
@@ -30,6 +31,15 @@ const Navbar = ({ onopen, isopen }) => {
         }
         getcontacts();
     }, [])
+
+    const deleteContact = async (id) => {
+        try {
+            await deleteDoc(doc(db, "contacts", id))
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className="my-4 p-5 rounded-lg bg-white">
@@ -65,7 +75,7 @@ const Navbar = ({ onopen, isopen }) => {
                                         </div>
                                         <div className="icons flex text-4xl text-blue-700 cursor-pointer">
                                             <RiEditCircleLine />
-                                            <IoMdTrash />
+                                            <IoMdTrash onClick={() => deleteContact(contact.id) } />
                                         </div>
                                     </div>
                                 ))
