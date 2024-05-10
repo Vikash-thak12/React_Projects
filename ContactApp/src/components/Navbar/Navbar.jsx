@@ -3,14 +3,18 @@ import './Navbar.css'
 // import { AiFillPlayCircle } from 'react-icons/ai';
 import { FaPlusCircle, FaRegUserCircle } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoMdTrash } from 'react-icons/io';
+// import AddandUpdateContact from '../AddandUpdateContact/AddandUpdateContact';
+// import useDisclose from '../../hooks/useDisclose';
 
-const Navbar = ({ onopen, isopen }) => {
+const Navbar = ({isopen, onopen}) => {
 
     const [contacts, setContacts] = useState([])
+
+    // const {isopen, onopen, onclose} = useDisclose();
 
     
     useEffect(() => {
@@ -35,6 +39,14 @@ const Navbar = ({ onopen, isopen }) => {
     const deleteContact = async (id) => {
         try {
             await deleteDoc(doc(db, "contacts", id))
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const updateContact = async (id) => {
+        try {
+            await updateDoc(doc(db, "contacts", id))
         } catch (error) {
             console.log(error);
         }
@@ -74,8 +86,8 @@ const Navbar = ({ onopen, isopen }) => {
                                             </div>
                                         </div>
                                         <div className="icons flex text-4xl text-blue-700 cursor-pointer">
-                                            <RiEditCircleLine />
-                                            <IoMdTrash onClick={() => deleteContact(contact.id) } />
+                                            <RiEditCircleLine isupdate onClick={onopen} className="cursor-pointer" />
+                                            <IoMdTrash onClick={() => deleteContact(contact.id)} className="cursor-pointer" />
                                         </div>
                                     </div>
                                 ))
@@ -84,6 +96,8 @@ const Navbar = ({ onopen, isopen }) => {
                     </>
                 )
             }
+
+            {/* <AddandUpdateContact isopen={isopen} onclose={onclose} isupdate  /> */}
             {/* <div className="datas mt-5 py-2 rounded-md gap-3 flex flex-col">
                 {
                     contacts.map((contact) => (

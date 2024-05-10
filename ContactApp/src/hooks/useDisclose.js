@@ -11,7 +11,7 @@ const useDisclose = () => {
     const onclose = () => {
         setIsopen(false)
     }
-    return {isopen, onopen, onclose}
+    return {isopen, onopen, onclose};
 }
 
-export default useDisclose
+export default useDisclose;
