@@ -7,16 +7,16 @@ import { collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firesto
 import { db } from '../../config/firebase';
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoMdTrash } from 'react-icons/io';
-// import AddandUpdateContact from '../AddandUpdateContact/AddandUpdateContact';
+import AddandUpdateContact from '../AddandUpdateContact/AddandUpdateContact';
 // import useDisclose from '../../hooks/useDisclose';
 
-const Navbar = ({isopen, onopen}) => {
+const Navbar = ({ isopen, onopen, onclose }) => {
 
     const [contacts, setContacts] = useState([])
 
     // const {isopen, onopen, onclose} = useDisclose();
 
-    
+
     useEffect(() => {
         const getcontacts = async () => {
             try {
@@ -86,7 +86,7 @@ const Navbar = ({isopen, onopen}) => {
                                             </div>
                                         </div>
                                         <div className="icons flex text-4xl text-blue-700 cursor-pointer">
-                                            <RiEditCircleLine isupdate onClick={onopen} className="cursor-pointer" />
+                                            <RiEditCircleLine isUpdate onClick={onopen} className="cursor-pointer" />
                                             <IoMdTrash onClick={() => deleteContact(contact.id)} className="cursor-pointer" />
                                         </div>
                                     </div>
@@ -96,27 +96,7 @@ const Navbar = ({isopen, onopen}) => {
                     </>
                 )
             }
-
-            {/* <AddandUpdateContact isopen={isopen} onclose={onclose} isupdate  /> */}
-            {/* <div className="datas mt-5 py-2 rounded-md gap-3 flex flex-col">
-                {
-                    contacts.map((contact) => (
-                        <div key={contact.id} className='data'>
-                            <div className='flex items-center gap-2'>
-                                <FaRegUserCircle className='text-4xl text-orange cursor-pointer' />
-                                <div className=''>
-                                    <h2 className='font-bold'>{contact.name}</h2>
-                                    <p>{contact.Email}</p>
-                                </div>
-                            </div>
-                            <div className="icons flex text-4xl text-blue-700 cursor-pointer">
-                                <RiEditCircleLine />
-                                <IoMdTrash />
-                            </div>
-                        </div>
-                    ))
-                }
-            </div> */}
+            <AddandUpdateContact onopen={onopen} onclose={onclose} isUpdate />
         </>
     );
 };

@@ -3,7 +3,7 @@ import Modal from "../Modal/Modal";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
-const AddandUpdateContact = ({isopen, onclose, isupdate}) => {
+const AddandUpdateContact = ({isopen, onclose, isUpdate}) => {
 
     const addContact = async (contact) => {
         try {
@@ -34,7 +34,7 @@ const AddandUpdateContact = ({isopen, onclose, isupdate}) => {
                         <label htmlFor="email" className="text-white">Email</label>
                         <Field type="email" name="Email" className="rounded-lg p-2 outline-none" />
                     </div>
-                    <button className="bg-blue-500 mx-auto py-2 px-4 rounded-lg mb-2">{isupdate ? "Update" : "add"} Contacts</button>
+                    <button className="bg-blue-500 mx-auto py-2 px-4 rounded-lg mb-2">{isUpdate ? "Update" : "add"} Contacts</button>
                 </Form>
             </Formik>
         </Modal>
