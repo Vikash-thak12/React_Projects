@@ -6,16 +6,9 @@ import { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { toast } from "sonner";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-} from "@/components/ui/dialog"
-
-import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import DialogBtn from "./Dialog";
 
 
 const CreateTrip = () => {
@@ -70,6 +63,9 @@ const CreateTrip = () => {
       }
     }).then((res) => {
       console.log(res);
+      localStorage.setItem('user', JSON.stringify(res.data))
+      setOpenDialog(false)
+      onGenerateTrip()
       
     })
   }
@@ -143,19 +139,7 @@ const CreateTrip = () => {
         <Button onClick={onGenerateTrip}>Generate Trip</Button>
       </div>
 
-      <Dialog open={openDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogDescription>
-              <img src="/logo.svg" alt="" />
-              <h2 className="mt-5 text-2xl font-bold">Sign In</h2>
-              <Button
-              onClick={login}
-               className="mt-5 w-full flex items-center gap-2"><FcGoogle className="h-5 w-5" />Sign In with Google</Button>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <DialogBtn open={openDialog} login={login} />
 
     </div>
   );
