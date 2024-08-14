@@ -1,10 +1,11 @@
 import './App.css'
+import Hero from './components/custom/Hero'
 
 function App() {
 
   return (
     <div>
-      <h1>Hey this is Vikash Thakur</h1>
+      <Hero />
     </div>
   )
 }
