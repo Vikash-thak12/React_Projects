@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
 import {
@@ -8,16 +8,40 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { useNavigate } from "react-router-dom";
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import DialogBtn from "@/create_trips/Dialog";
+import axios from "axios";
 
 
 const Header = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const navigate = useNavigate()
+    const [openDialog, setOpenDialog] = useState(false)
+
 
     const handleLogout = () => {
+        googleLogout()
         localStorage.removeItem('user')
         navigate("/")
     }
+
+    const login = useGoogleLogin({
+        onSuccess: (coreRes) => getUserProfile(coreRes),
+        onError: (error) => console.log(error)
+      })
+
+      const getUserProfile = (tokenInfo) => {
+        axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`, {
+          headers: {
+            Authorization: `Bearer ${tokenInfo?.access_token}`,
+            Accept: 'Application/json'
+          }
+        }).then((res) => {
+          console.log(res);
+          localStorage.setItem('user', JSON.stringify(res.data))
+          setOpenDialog(false)
+        })
+      }
 
     useEffect(() => {
         // console.log(user);
@@ -27,7 +51,7 @@ const Header = () => {
     return (
         <div className="flex justify-between items-center p-5 shadow-md">
             <div>
-                <img src="/logo.svg" alt="logo" />
+                <img onClick={()=> navigate("/")} src="/logo.svg" alt="logo" className="cursor-pointer" />
             </div>
             <div>
                 {
@@ -46,11 +70,13 @@ const Header = () => {
 
                         </div>
                     ) :
-                        <Button>
+                        <Button onClick={() => setOpenDialog(true)}>
                             Sign In
                         </Button>
                 }
             </div>
+            <DialogBtn open={openDialog} login={login} />
+
         </div>
     );
 };
