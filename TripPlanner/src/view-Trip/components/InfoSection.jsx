@@ -31,11 +31,17 @@ const InfoSection = ({ trip }) => {
             <img src={photoUrl} alt="main" className="w-full h-[300px] object-cover rounded-lg " />
             <div>
                 <h1 className="font-bold py-2 text-2xl">{trip?.userSelection?.location?.label}</h1>
-                <div className="flex items-center justify-between">
-                    <div className="flex gap-5 py-3">
-                        <h2 className="py-2 px-5 bg-gray-200 rounded-full text-gray-500">🗓️ {trip?.userSelection?.Days} Days</h2>
-                        <h2 className="py-2 px-5 bg-gray-200 rounded-full text-gray-500">💸 {trip?.userSelection?.Budget} Budget</h2>
-                        <h2 className="py-2 px-5 bg-gray-200 rounded-full text-gray-500">👤 No of Traveller: {trip?.userSelection?.People}</h2>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div className="flex flex-wrap gap-3 md:gap-5 py-3">
+                        <h2 className="py-1 md:py-2 px-3 md:px-5 bg-gray-200 rounded-full text-sm md:text-base text-gray-500">
+                            🗓️ {trip?.userSelection?.Days} Days
+                        </h2>
+                        <h2 className="py-1 md:py-2 px-3 md:px-5 bg-gray-200 rounded-full text-sm md:text-base text-gray-500">
+                            💸 {trip?.userSelection?.Budget} Budget
+                        </h2>
+                        <h2 className="py-1 md:py-2 px-3 md:px-5 bg-gray-200 rounded-full text-sm md:text-base text-gray-500">
+                            👤 No of Traveller: {trip?.userSelection?.People}
+                        </h2>
                     </div>
                     <Link to={"https://www.google.com/maps/search/?api=1&query=" + trip?.userSelection?.location?.label} target="_blank">
                         <Button>
@@ -43,6 +49,7 @@ const InfoSection = ({ trip }) => {
                         </Button>
                     </Link>
                 </div>
+
             </div>
         </div>
     );
